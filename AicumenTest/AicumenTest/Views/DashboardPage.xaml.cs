@@ -21,13 +21,10 @@ namespace AicumenTest
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
         }
         protected override void OnAppearing()
-        {
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                NavigationPage.SetBackButtonTitle(this, string.Empty);
-                NavigationPage.SetHasBackButton(this, false);
-            }
-        }
+        {            
+            NavigationPage.SetBackButtonTitle(this, string.Empty);
+            NavigationPage.SetHasBackButton(this, false);
+        }        
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as DashboardPageMenuItem;
