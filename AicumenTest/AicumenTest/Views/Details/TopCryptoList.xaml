@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AicumenTest.TopCryptoList"
+             xmlns:helper="clr-namespace:AicumenTest.Helper"
+             xmlns:vm="clr-namespace:AicumenTest.ViewModels"
+             Title="Top 10 Crypto List">
+    <ContentPage.BindingContext>
+        <vm:TopCryptoListViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Styles -->
+            <Style x:Key="SubtitleTextStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="Verdana"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Frame Padding="5" HasShadow="false" Margin="10,0" CornerRadius="5">
+            <ListView x:Name="CryptoList" ItemsSource="{Binding Cryptos,Mode=TwoWay}" HasUnevenRows="True" RowHeight="150">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>                            
+                            <Grid Margin="0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Symbol,Mode=TwoWay}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HeightRequest="80" Style="{StaticResource SubtitleTextStyle}" />
+                                <StackLayout Grid.Column="1">
+                                    <Label  Text="{Binding Name,Mode=TwoWay}" Style="{StaticResource SubtitleTextStyle}" />
+                                    <Label Text="{Binding Price_USD,Mode=TwoWay}" Style="{StaticResource SubtitleTextStyle}" />
+                                    <Label Text="{Binding Percent_change_1h,Mode=TwoWay}" Style="{StaticResource SubtitleTextStyle}" />
+                                    <Label Text="{Binding Percent_change_24h,Mode=TwoWay}" Style="{StaticResource SubtitleTextStyle}" />
+                                    <Label Text="{Binding Percent_change_7d,Mode=TwoWay}" Style="{StaticResource SubtitleTextStyle}" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
